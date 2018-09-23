@@ -15,6 +15,17 @@ Adapters:
 | `OffsetDateXmlAdapter` | `xs:date` | `OffsetDateTime` (with time fields set to midnight)
 | `OffsetDateClassXmlAdapter` | `xs:date` | `OffsetDate` (custom class)
 
+## Download
+
+The library is available from Central Maven:
+
+```xml
+<dependency>
+    <groupId>com.addicticks.oss.jaxb</groupId>
+    <artifactId>java8datetime</artifactId>
+    <version> ... latest ...</version>
+</dependency>
+```
 
 ## Usage in classes
 
