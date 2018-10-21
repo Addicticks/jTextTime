@@ -26,12 +26,14 @@ public class Customer {
 
     @XmlElement
     @XmlJavaTypeAdapter(OffsetDateTimeXmlAdapter.class)
+    @XmlSchemaType(name="dateTime")
     public OffsetDateTime getLastOrderTime() {
         ....
     }
     
     @XmlElement
     @XmlJavaTypeAdapter(OffsetDateXmlAdapter.class)
+    @XmlSchemaType(name="date")
     public OffsetDateTime getDateOfBirth() {   // returns a date-only value
         ....
     }
@@ -50,6 +52,12 @@ individually. Simply put something like the following in your `package-info.java
     @XmlJavaTypeAdapter(value=OffsetTimeXmlAdapter.class,      type=OffsetTime.class),
     @XmlJavaTypeAdapter(value=OffsetDateClassXmlAdapter.class, type=OffsetDate.class),
 })
+@XmlSchemaTypes
+({
+    @XmlSchemaType(name="dateTime", type=OffsetDateTime.class),
+    @XmlSchemaType(name="time", type=OffsetTime.class),
+    @XmlSchemaType(name="date", type=OffsetDate.class)
+})
 package org.example.mydtopackage;
 
 import com.addicticks.jaxb.adapters.time.OffsetDate;
@@ -58,11 +66,18 @@ import com.addicticks.jaxb.adapters.time.OffsetDateClassXmlAdapter;
 import com.addicticks.jaxb.adapters.time.OffsetTimeXmlAdapter;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlSchemaTypes;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
+
 ```
 
 The adapter will now apply to all classes in the package.
+Furthermore, because of the `@XmlSchemaTypes` annotation, if you
+generate an XML Schema from your classes, it will use correct schema types.
+(otherwise you'll see `xs:string` as the schema type for such elements/attributes,
+which is *not* what you want)
 
 
 ## Differences between XML date/time types and Java's Offset datetime classes
