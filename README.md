@@ -171,3 +171,8 @@ Thereby it will automatically be picked up by the plugin.
 ## License
 
 [Apache License, version 2](https://www.apache.org/licenses/LICENSE-2.0).
+
+
+## Support
+
+Log an issue here in GitHub. Pull requests are welcome.
