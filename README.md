@@ -15,6 +15,17 @@ Adapters:
 | `OffsetDateXmlAdapter` | `xs:date` | `OffsetDateTime` (with time fields set to midnight)
 | `OffsetDateClassXmlAdapter` | `xs:date` | `OffsetDate` (custom class)
 
+## Download
+
+The library is available from Central Maven:
+
+```xml
+<dependency>
+    <groupId>com.addicticks.oss.jaxb</groupId>
+    <artifactId>java8datetime</artifactId>
+    <version> ... latest ...</version>
+</dependency>
+```
 
 ## Usage in classes
 
@@ -114,10 +125,10 @@ after the decimal point.
 ## Usage with XJC
 
 If you generate Java classes from XML schema using the `xjc` tool then you must 
-use a so-called bindings file to instruct the xjc tool to use the adapters from 
-this library. 
+use a so-called bindings file to instruct the xjc tool which adapter you want to use.
 
-The bindings file should look like this:
+Using the out-of-the-box adapters from this library then the bindings file 
+should look like this:
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8"?>
