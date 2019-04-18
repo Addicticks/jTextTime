@@ -38,10 +38,10 @@ import java.time.temporal.TemporalQueries;
  */
 public class OffsetDateTimeXmlAdapter extends OffsetDateTimeXmlAdapterBase<OffsetDateTime> {
 
-    private final DateTimeFormatter dataTimeFormatter;
+    private final DateTimeFormatter dateTimeFormatter;
 
     public OffsetDateTimeXmlAdapter() {
-        dataTimeFormatter = new DateTimeFormatterBuilder()
+        dateTimeFormatter = new DateTimeFormatterBuilder()
                 .append(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
                 .optionalStart()
                 .appendOffsetId()
@@ -56,15 +56,15 @@ public class OffsetDateTimeXmlAdapter extends OffsetDateTimeXmlAdapterBase<Offse
      */
     @Override
     public OffsetDateTime unmarshal(String v) {
-        return dataTimeFormatter.parse(v, this::from);
+        return dateTimeFormatter.parse(v, this::from);
     }
-
+    
     /**
      * Converts to {@code xs:dateTime} format.
      */
     @Override
     public String marshal(OffsetDateTime v) {
-        return dataTimeFormatter.format(v);
+        return dateTimeFormatter.format(v);
     }
     
     
