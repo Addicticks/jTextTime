@@ -57,6 +57,9 @@ Normally you'll be forced to work with XMLGregorianCalendar, but not anymore.
 See [Wiki](https://github.com/Addicticks/jTexttime/wiki/JAXB-type-adapter-classes-for-java.time)
 for more information.
 
+## Javadoc
+
+[![Javadocs](https://javadoc.io/badge/com.addicticks.oss/jtexttime.svg)](https://javadoc.io/doc/com.addicticks.oss/jtexttime)
 
 
 ## License
