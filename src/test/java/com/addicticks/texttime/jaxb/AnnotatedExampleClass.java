@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.addicticks.jaxb.adapters.time;
+package com.addicticks.texttime.jaxb;
 
+import com.addicticks.texttime.jaxb.OffsetDateTimeXmlAdapter;
+import com.addicticks.texttime.jaxb.OffsetDateXmlAdapter;
 import java.time.OffsetDateTime;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.addicticks.jaxb.adapters.time;
+package com.addicticks.texttime.jaxb;
 
+import static com.addicticks.texttime.jaxb.TestBase.OFFSET_SECONDS_TEST_VALUE;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeParseException;
@@ -27,8 +29,8 @@ public class OffsetDateXmlAdapterTest {
     public void testUnmarshal() {
         OffsetDateXmlAdapter instance = new OffsetDateXmlAdapter() {
             @Override
-            public ZoneOffset getCurrentZoneOffset() {
-                return ZoneOffset.ofTotalSeconds(13549);  // +03:45:49
+            public ZoneOffset getZoneOffsetForDate(LocalDate date) {
+                return ZoneOffset.ofTotalSeconds(OFFSET_SECONDS_TEST_VALUE);  // +03:45:49
             }
         };
         
@@ -68,7 +70,7 @@ public class OffsetDateXmlAdapterTest {
         assertEquals(0, result.getMinute());
         assertEquals(0, result.getSecond());
         assertEquals(0, result.getNano());
-        assertEquals(13549, result.getOffset().getTotalSeconds());
+        assertEquals(OFFSET_SECONDS_TEST_VALUE, result.getOffset().getTotalSeconds());
         
     }
 

@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.addicticks.jaxb.adapters.time;
+package com.addicticks.texttime.jaxb;
 
+import static com.addicticks.texttime.jaxb.TestBase.OFFSET_SECONDS_TEST_VALUE;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeParseException;
@@ -28,22 +30,52 @@ public class OffsetDateTimeXmlAdapterTest {
         System.out.println("unmarshal");
         OffsetDateTimeXmlAdapter instance = new OffsetDateTimeXmlAdapter() {
             @Override
-            public ZoneOffset getCurrentZoneOffset() {
-                return ZoneOffset.ofTotalSeconds(13549);  // +03:45:49
+            public ZoneOffset getZoneOffsetForDateTime(LocalDateTime dateTime) {
+                return ZoneOffset.ofTotalSeconds(OFFSET_SECONDS_TEST_VALUE);  // +03:45:49
             }
         };
         
         OffsetDateTime result;
         
+
+        // More than 9 decimals on the seconds value should be 
+        // gracefully handled using truncation.
+        assertEquals( 
+                instance.unmarshal("2018-03-14T23:30:28.123456789012345678901234567890Z"),
+                instance.unmarshal("2018-03-14T23:30:28.123456789Z")
+        );
         
-        // More than 9 digits after the decimal point in the seconds 
-        // element will throw error. This is ok.
-        try {
-            result = instance.unmarshal("2018-03-14T23:30:28.123456789012345678901234567890Z");
-        } catch (Exception ex) {
-            assertTrue(ex instanceof DateTimeParseException);
-        }
+        assertEquals( 
+                instance.unmarshal("2018-03-14T23:30:28.123456789012345678901234567890"),
+                instance.unmarshal("2018-03-14T23:30:28.123456789")
+        );
         
+        assertEquals( 
+                instance.unmarshal("2018-03-14T23:30:28.123456789012345678901234567890+08:00"),
+                instance.unmarshal("2018-03-14T23:30:28.123456789+08:00")
+        );
+        assertEquals( 
+                instance.unmarshal("2018-03-14T23:30:28.123456789012345678901234567890-06:00"),
+                instance.unmarshal("2018-03-14T23:30:28.123456789-06:00")
+        );
+        
+        assertEquals(
+                instance.unmarshal("2018-03-14T23:30:28.123z"),
+                instance.unmarshal("2018-03-14T23:30:28.123Z")
+        );
+
+        assertEquals(
+                instance.unmarshal("2018-03-14t23:30:28.123Z"),
+                instance.unmarshal("2018-03-14T23:30:28.123Z")
+        );
+
+
+        
+        
+        assertNotEquals( 
+                instance.unmarshal("2018-03-14T23:30:28.123456789012345678901234567890Z"),
+                instance.unmarshal("2018-03-14T23:30:28.123456790Z")
+        );
         
         result = instance.unmarshal("2018-03-14T23:30:28.123456789Z");
         assertEquals(2018, result.getYear());
@@ -73,10 +105,38 @@ public class OffsetDateTimeXmlAdapterTest {
         assertEquals(30, result.getMinute());
         assertEquals(28, result.getSecond());
         assertEquals(123456789, result.getNano());
-        assertEquals(13549, result.getOffset().getTotalSeconds());
+        assertEquals(OFFSET_SECONDS_TEST_VALUE, result.getOffset().getTotalSeconds());
         
+        
+        // Test where ' ' is used as delimiter between date and time value.
+        // Not compliant with XML Schema definition but we allow it anyway.
+        result = instance.unmarshal("2018-03-14 23:30:28.123456789");
+        assertEquals(2018, result.getYear());
+        assertEquals(3, result.getMonthValue());
+        assertEquals(14, result.getDayOfMonth());
+        assertEquals(23, result.getHour());
+        assertEquals(30, result.getMinute());
+        assertEquals(28, result.getSecond());
+        assertEquals(123456789, result.getNano());
+        assertEquals(OFFSET_SECONDS_TEST_VALUE, result.getOffset().getTotalSeconds());
     }
 
+    
+    @Test(expected = DateTimeParseException.class)
+    public void testUnmarshalEx1() {
+        OffsetDateTimeXmlAdapter instance = new OffsetDateTimeXmlAdapter();
+        instance.unmarshal("2018-03-14T23:30:28.123456x89");
+    }
+    
+    @Test(expected = DateTimeParseException.class)
+    public void testUnmarshalEx2() {
+        OffsetDateTimeXmlAdapter instance = new OffsetDateTimeXmlAdapter();
+        instance.unmarshal("2018-03-14T23:30:28.1234567890123X");
+    }
+    
+    
+    
+    
     @Test
     public void testMarshal() {
         System.out.println("marshal");

@@ -17,7 +17,7 @@
 
 /**
  * JAXB adapter classes to convert between XML date-time values and
- * Java 8 Date-Time. 
+ * JDK's Date-Time. 
  *
  * <p>The adapters convert to/from {@code xs:dateTime}, {@code xs:time} and 
  * {@code xs:date} on one side and Java's {@code OffsetDateTime} and 
@@ -25,4 +25,4 @@
  * 
  * 
  */
-package com.addicticks.jaxb.adapters.time;
+package com.addicticks.texttime.jaxb;

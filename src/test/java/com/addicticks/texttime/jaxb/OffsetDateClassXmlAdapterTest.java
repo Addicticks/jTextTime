@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.addicticks.jaxb.adapters.time;
+package com.addicticks.texttime.jaxb;
 
+import com.addicticks.texttime.OffsetDate;
+import static com.addicticks.texttime.jaxb.TestBase.OFFSET_SECONDS_TEST_VALUE;
+import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeParseException;
 import org.junit.Test;
@@ -26,17 +29,12 @@ public class OffsetDateClassXmlAdapterTest {
     public void testUnmarshal() {
         OffsetDateClassXmlAdapter instance = new OffsetDateClassXmlAdapter() {
             @Override
-            public ZoneOffset getCurrentZoneOffset() {
-                return ZoneOffset.ofTotalSeconds(13549);  // +03:45:49
+            public ZoneOffset getZoneOffsetForDate(LocalDate localDate) {
+                return ZoneOffset.ofTotalSeconds(OFFSET_SECONDS_TEST_VALUE);  // +03:45:49
             }
         };
         
         OffsetDate result;
-        try {
-            result = instance.unmarshal("2018-03-14T23:30:28.123456789012345678901234567890Z");
-        } catch (Exception ex) {
-            assertTrue(ex instanceof DateTimeParseException);
-        }
         
         
         result = instance.unmarshal("2018-03-14Z");
@@ -67,7 +65,7 @@ public class OffsetDateClassXmlAdapterTest {
         assertEquals(0, result.getDate().getMinute());
         assertEquals(0, result.getDate().getSecond());
         assertEquals(0, result.getDate().getNano());
-        assertEquals(13549, result.getDate().getOffset().getTotalSeconds());
+        assertEquals(OFFSET_SECONDS_TEST_VALUE, result.getDate().getOffset().getTotalSeconds());
         
     }
 

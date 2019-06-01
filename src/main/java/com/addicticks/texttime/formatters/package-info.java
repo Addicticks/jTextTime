@@ -13,23 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.addicticks.jaxb.adapters.time;
 
-import com.addicticks.jaxb.JaxbUtils;
-import java.io.File;
-import javax.xml.bind.JAXBException;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
 
-public class AnnotationTest {
-
-    @Test
-    public void testSchema() throws JAXBException {
-        
-        //JaxbUtils.generateXMLSchemaFile(AnnotatedExampleClass.class, new File("D:\\test.xsd"));
-        
-        assertTrue(Boolean.TRUE);   // Always true
-    }
-
-    
-}
+/**
+ * Provides additional Formatter-Parsers to complement those in the JDK.
+ */
+package com.addicticks.texttime.formatters;

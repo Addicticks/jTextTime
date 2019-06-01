@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.addicticks.jaxb.adapters.time;
+package com.addicticks.texttime.jaxb;
 
+import static com.addicticks.texttime.jaxb.TestBase.OFFSET_SECONDS_TEST_VALUE;
+import java.time.LocalTime;
 import java.time.OffsetTime;
 import java.time.ZoneOffset;
-import java.time.format.DateTimeParseException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,20 +30,39 @@ public class OffsetTimeXmlAdapterTest {
         System.out.println("unmarshal");
         OffsetTimeXmlAdapter instance = new OffsetTimeXmlAdapter() {
             @Override
-            public ZoneOffset getCurrentZoneOffset() {
-                return ZoneOffset.ofTotalSeconds(13549);  // +03:45:49
+            public ZoneOffset getZoneOffsetForTime(LocalTime time) {
+                return ZoneOffset.ofTotalSeconds(OFFSET_SECONDS_TEST_VALUE);  // +03:45:49
             }
         };
         
         OffsetTime result;
         
-        // More than 9 digits after the decimal point in the seconds 
-        // element will throw error. This is ok.
-        try {
-            result = instance.unmarshal("23:30:28.123456789012345678901234567890Z");
-        } catch (Exception ex) {
-            assertTrue(ex instanceof DateTimeParseException);
-        }
+        
+        // More than 9 decimals on the seconds value should be 
+        // gracefully handled using truncation.
+        assertEquals( 
+                instance.unmarshal("23:30:28.123456789012345678901234567890Z"),
+                instance.unmarshal("23:30:28.123456789Z")
+        );
+        
+        assertEquals( 
+                instance.unmarshal("23:30:28.123456789012345678901234567890"),
+                instance.unmarshal("23:30:28.123456789")
+        );
+        
+        assertEquals( 
+                instance.unmarshal("23:30:28.123456789012345678901234567890+08:00"),
+                instance.unmarshal("23:30:28.123456789+08:00")
+        );
+        assertEquals( 
+                instance.unmarshal("23:30:28.123456789012345678901234567890-06:00"),
+                instance.unmarshal("23:30:28.123456789-06:00")
+        );
+        
+        assertNotEquals( 
+                instance.unmarshal("23:30:28.123456789012345678901234567890Z"),
+                instance.unmarshal("23:30:28.123456790Z")
+        );
         
         
         result = instance.unmarshal("23:30:28.123456789Z");
@@ -64,7 +84,7 @@ public class OffsetTimeXmlAdapterTest {
         assertEquals(30, result.getMinute());
         assertEquals(28, result.getSecond());
         assertEquals(123456789, result.getNano());
-        assertEquals(13549, result.getOffset().getTotalSeconds());
+        assertEquals(OFFSET_SECONDS_TEST_VALUE, result.getOffset().getTotalSeconds());
         
     }
 
