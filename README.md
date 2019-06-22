@@ -39,8 +39,8 @@ The library is available from Central Maven:
 
 ```xml
 <dependency>
-    <groupId>com.addicticks.oss.jaxb</groupId>
-    <artifactId>java8datetime</artifactId>
+    <groupId>com.addicticks.oss</groupId>
+    <artifactId>jtexttime</artifactId>
     <version> ... latest ...</version>
 </dependency>
 ```
