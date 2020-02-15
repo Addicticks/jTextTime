@@ -29,8 +29,9 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  * 
  * <p>
  * If the adapter is used for unmarshalling (parsing XML to object) and
- * there is no zone offset in the input data then customizing the
- * {@link #getZoneOffsetForTime(java.time.LocalTime)} method may be needed.
+ * there is no zone offset in the input data then it may be needed to
+ * extend this class and customize the
+ * {@link #getZoneOffsetForTime(java.time.LocalTime)} method.
  */
 public class OffsetTimeXmlAdapter extends XmlAdapter<String, OffsetTime> {
 
@@ -69,7 +70,8 @@ public class OffsetTimeXmlAdapter extends XmlAdapter<String, OffsetTime> {
      * This method is needed because the XML Schema 
      * {@code time} data type allows to leave out the offset. Therefore,
      * when unmarshalling there may be no offset in the input data. If this is
-     * the case then this method will be called.
+     * the case then this method will be called. In summary, the method
+     * is only called when unmarshalling and only when input data has no offset.
      * 
      * <p>
      * The default implementation uses the the system's default zone id 
