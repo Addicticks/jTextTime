@@ -25,6 +25,7 @@ import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQueries;
+import java.util.Objects;
 
 /**
  * A date with an offset from UTC/Greenwich in the ISO-8601 calendar system, 
@@ -81,6 +82,8 @@ public final class OffsetDate implements Serializable, Comparable<OffsetDate> {
      * @see OffsetDateTime#of(java.time.LocalDate, java.time.LocalTime, java.time.ZoneOffset) 
      */
     public static OffsetDate of(LocalDate date, ZoneOffset offset) {
+        Objects.requireNonNull(date, "date argument must not be null");
+        Objects.requireNonNull(date, "offset argument must not be null");
         return new OffsetDate(OffsetDateTime.of(date, LocalTime.MIDNIGHT, offset));
     }
     
@@ -93,6 +96,7 @@ public final class OffsetDate implements Serializable, Comparable<OffsetDate> {
      * @return a date, not null
      */
     public static OffsetDate of(OffsetDateTime datetime) {
+        Objects.requireNonNull(datetime, "datetime argument must not be null");
         return new OffsetDate(datetime.truncatedTo(ChronoUnit.DAYS));
     }
 
@@ -177,6 +181,7 @@ public final class OffsetDate implements Serializable, Comparable<OffsetDate> {
      * @throws DateTimeException if unable to convert to an {@code OffsetDate}
      */
     public static OffsetDate from(TemporalAccessor temporal) {
+        Objects.requireNonNull(temporal, "temporal argument must not be null");
         if (temporal instanceof OffsetDateTime) {
             OffsetDateTime dt = (OffsetDateTime) temporal;
             return OffsetDate.of(dt);
@@ -199,7 +204,5 @@ public final class OffsetDate implements Serializable, Comparable<OffsetDate> {
                     + temporal + " of type " + temporal.getClass().getName(), ex);
         }
     }
-    
-    
     
 }
