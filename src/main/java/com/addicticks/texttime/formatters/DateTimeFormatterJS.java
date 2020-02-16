@@ -68,14 +68,15 @@ import java.util.Locale;
  *   </li>
  * </ul>
  * 
- * <h3 id="predefined">Predefined Formatters-Parsers overview</h3>
- * <table summary="Predefined Formatters" cellpadding="2" cellspacing="3" border="0" >
+ * <h2 id="predefined">Predefined Formatters-Parsers overview</h2>
+ * <table class="striped">
+ * <caption style="display:none">Predefined Formatters</caption>
  * <thead>
  * <tr class="tableSubHeadingColor">
- * <th class="colFirst" align="left">Formatter</th>
- * <th class="colFirst" align="left">Usage</th>
- * <th class="colLast" align="left">Description</th>
- * <th class="colLast" align="left">Examples</th>
+ * <th class="colFirst" >Formatter</th>
+ * <th class="colFirst" >Usage</th>
+ * <th class="colLast"  >Description</th>
+ * <th class="colLast"  >Examples</th>
  * </tr>
  * </thead>
  * <tbody>
@@ -96,7 +97,7 @@ import java.util.Locale;
  * 
  * 
  * 
- * @see <a href="http://es5.github.io/#x15.9.1.15">ECMAScript Date Time String Format</a>
+ * @see <a href="https://es5.github.io/#x15.9.1.15">ECMAScript Date Time String Format</a>
  * 
  */
 public class DateTimeFormatterJS {

@@ -65,14 +65,15 @@ import java.util.function.Function;
  * However, the XML Schema data types do not mandate the presence of the timezone offset
  * and therefore they have no direct equivalent in the JDK.
  * 
- * <h3 id="predefined">Predefined Formatters-Parsers overview</h3>
- * <table summary="Predefined Formatters" cellpadding="2" cellspacing="3" border="0" >
+ * <h2 id="predefined">Predefined Formatters-Parsers overview</h2>
+ * <table class="striped">
+ * <caption style="display:none">Predefined Formatters</caption>
  * <thead>
  * <tr class="tableSubHeadingColor">
- * <th class="colFirst" align="left">Formatter</th>
- * <th class="colFirst" align="left">Usage</th>
- * <th class="colLast" align="left">Description</th>
- * <th class="colLast" align="left">Examples</th>
+ * <th class="colFirst" >Formatter</th>
+ * <th class="colFirst" >Usage</th>
+ * <th class="colLast"  >Description</th>
+ * <th class="colLast"  >Examples</th>
  * </tr>
  * </thead>
  * <tbody>
@@ -114,8 +115,8 @@ import java.util.function.Function;
  * </tbody>
  * </table>
  * 
- * <p>
- * <h3 id="parserMethods">Parsing</h3>
+ * 
+ * <h2 id="parserMethods">Parsing</h2>
  * This class also provides convenience methods for parsing XML Schema
  * date/time string values into their best match JDK class.
  * 

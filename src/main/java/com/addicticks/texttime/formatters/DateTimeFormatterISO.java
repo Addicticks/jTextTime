@@ -40,14 +40,15 @@ import java.util.function.Function;
  * such as accepting a space as a the separator between the date and the
  * time value and accepting the absence of the timezone offset.
  * 
- * <h3 id="predefined">Predefined Formatters-Parsers overview</h3>
- * <table summary="Predefined Formatters" cellpadding="2" cellspacing="3" border="0" >
+ * <h2 id="predefined">Predefined Formatters-Parsers overview</h2>
+ * <table class="striped">
+ * <caption style="display:none">Predefined Formatters</caption>
  * <thead>
  * <tr class="tableSubHeadingColor">
- * <th class="colFirst" align="left">Formatter</th>
- * <th class="colFirst" align="left">Usage</th>
- * <th class="colLast" align="left">Description</th>
- * <th class="colLast" align="left">Examples</th>
+ * <th class="colFirst" >Formatter</th>
+ * <th class="colFirst" >Usage</th>
+ * <th class="colLast"  >Description</th>
+ * <th class="colLast"  >Examples</th>
  * </tr>
  * </thead>
  * <tbody>
@@ -78,13 +79,13 @@ import java.util.function.Function;
  * </tbody>
  * </table>
  * 
- * <p>
- * <h3 id="parserMethods">Parsing</h3>
+ * 
+ * <h2 id="parserMethods">Parsing</h2>
  * This class also provides convenience methods for parsing ISO-8601
  * date/time string values with optional offset.
  * 
- * <p>
- * <h3 id="formatting">Formatting</h3>
+ * 
+ * <h2 id="formatting">Formatting</h2>
  * For producing ISO-8601 compliant string values you can simply use
  * the classes in the JDK.
  * 
