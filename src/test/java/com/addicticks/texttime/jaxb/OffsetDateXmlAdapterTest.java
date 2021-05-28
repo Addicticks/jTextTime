@@ -86,4 +86,16 @@ public class OffsetDateXmlAdapterTest {
         assertEquals("2018-03-14+02:00", instance.marshal(t));
     }
     
+    /**
+     * Test of marshal method, of class OffsetDateXmlAdapter with null value. (Ex. optional attributes)
+     */
+    @Test
+    public void testMarshalNullValue() {
+        OffsetDateXmlAdapter instance = new OffsetDateXmlAdapter();
+        OffsetDateTime t = null;
+        
+        
+        assertNull( instance.marshal(t));        
+    }
+    
 }

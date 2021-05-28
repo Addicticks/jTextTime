@@ -58,6 +58,7 @@ public class OffsetTimeXmlAdapter extends XmlAdapter<String, OffsetTime> {
      */
     @Override
     public final String marshal(OffsetTime v) {
+        if (v == null) return null;
         return DateTimeFormatterXSD.XSD_TIME.format(v);
     }
 

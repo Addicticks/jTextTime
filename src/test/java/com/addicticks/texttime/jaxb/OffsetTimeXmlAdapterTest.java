@@ -106,4 +106,16 @@ public class OffsetTimeXmlAdapterTest {
         assertEquals("23:30:00Z", instance.marshal(t));
     }
     
+    /**
+     * Test of marshal method, of class OffsetTimeXmlAdapter with null value. (Ex. optional attributes)
+     */
+    @Test
+    public void testMarshalNullValue() {
+        
+        OffsetTimeXmlAdapter instance = new OffsetTimeXmlAdapter();
+        OffsetTime t = null;
+        
+        assertNull(instance.marshal(t));
+    }
+    
 }
