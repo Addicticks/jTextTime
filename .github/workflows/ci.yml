@@ -1,6 +1,6 @@
 # 
 
-name: Java CI with Maven
+name: Build and Test
 
 on:
   push:
