@@ -1,3 +1,9 @@
+
+[![CI](https://github.com/Addicticks/jTextTime/actions/workflows/ci.yml/badge.svg)](https://github.com/Addicticks/jTextTime/actions/workflows/ci.yml)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.addicticks.oss/jtexttime/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.addicticks.oss/jtexttime)
+[![javadoc](https://javadoc.io/badge2/com.addicticks.oss/jtexttime/javadoc.svg)](https://javadoc.io/doc/com.addicticks.oss/jtexttime) 
+
+
 # Introduction
 
 jTextTime is a small no-dep library to convert between various derivatives
