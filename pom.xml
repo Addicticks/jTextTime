@@ -91,7 +91,7 @@
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <useReleaseProfile>false</useReleaseProfile>
-                    <releaseProfiles>release-to-central</releaseProfiles>
+                    <releaseProfiles>release-to-central,ossrh</releaseProfiles>
                     <goals>deploy</goals>
                 </configuration>
             </plugin>
