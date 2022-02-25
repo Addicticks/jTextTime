@@ -13,6 +13,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <netbeans.hint.license>apache20</netbeans.hint.license>
+
+        <!-- Used by the Maven Release Plugin to pick the right
+             entry from <servers> section in settings.xml file.  -->
+        <project.scm.id>github.com-addicticks-dev</project.scm.id>
     </properties>
     
     <dependencies>
