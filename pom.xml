@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.addicticks.oss</groupId>
     <artifactId>jtexttime</artifactId>
-    <version>1.2.3-SNAPSHOT</version>
+    <version>1.2.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>jTextTime: Supplementing classes for java.time</name>
     <url>https://github.com/Addicticks/jTextTime</url>
