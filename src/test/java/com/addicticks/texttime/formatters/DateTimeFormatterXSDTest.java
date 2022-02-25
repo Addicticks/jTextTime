@@ -15,7 +15,6 @@
  */
 package com.addicticks.texttime.formatters;
 
-import com.addicticks.texttime.formatters.DateTimeFormatterXSD;
 import com.addicticks.texttime.OffsetDate;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -80,6 +79,14 @@ public class DateTimeFormatterXSDTest {
         t = OffsetDateTime.of(2018, 3, 14, 23, 30, 28, 123456789, ZoneOffset.ofHoursMinutes(2, 0));
         assertEquals(t, DateTimeFormatterXSD.parseIntoOffsetDateTime("2018-03-14T23:30:28.12345678901234567890123456789+02", ZoneOffset.ofHoursMinutes(9, 0)));
         
+
+        // Test if 24:00:00 works as intended. This format is allowed according
+        // to the XSD spec. The two values:
+        //   2018-03-14T24:00:00.0
+        //   2018-03-15T00:00:00.0
+        // are the same thing.
+        t = OffsetDateTime.of(2018, 3, 15, 0, 0, 0, 0, ZoneOffset.UTC);
+        assertEquals(t, DateTimeFormatterXSD.parseIntoOffsetDateTime("2018-03-14T24:00:00.0", ZoneOffset.UTC));
         
     }
 
@@ -153,6 +160,14 @@ public class DateTimeFormatterXSDTest {
         
         t = OffsetTime.of(23, 30, 28, 123456789, ZoneOffset.ofHoursMinutes(2, 0));
         assertEquals(t, DateTimeFormatterXSD.parseIntoOffsetTime("23:30:28.12345678901234567890123456789+02", ZoneOffset.ofHoursMinutes(9, 0)));
+
+
+        // Test if 24:00:00 works as intended. This format is allowed according
+        // to the XSD spec. 
+        t = OffsetTime.of(0, 0, 0, 0, ZoneOffset.UTC);
+        assertEquals(t, DateTimeFormatterXSD.parseIntoOffsetTime("24:00:00.0", ZoneOffset.UTC));
+        
+
     }
     
     @Test

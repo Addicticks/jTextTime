@@ -214,7 +214,7 @@ public class DateTimeFormatterXSD {
                 .appendOffset(XSD_TZ_OFFSET_PATTERN_LENIENT, "Z")
                 .optionalEnd()
                 .toFormatter(Locale.US)
-                .withResolverStyle(ResolverStyle.STRICT)
+                .withResolverStyle(ResolverStyle.SMART)  // allow 24:00:00
                 .withChronology(IsoChronology.INSTANCE);
     }
     
@@ -457,7 +457,7 @@ public class DateTimeFormatterXSD {
                 .appendOffset(XSD_TZ_OFFSET_PATTERN_LENIENT, "Z")
                 .optionalEnd()
                 .toFormatter(Locale.US)
-                .withResolverStyle(ResolverStyle.STRICT)
+                .withResolverStyle(ResolverStyle.SMART)  // Allow 24:00:00
                 .withChronology(IsoChronology.INSTANCE);
     }
 
