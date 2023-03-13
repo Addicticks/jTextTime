@@ -16,7 +16,7 @@
 package com.addicticks.texttime.jaxb;
 
 import java.io.File;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 

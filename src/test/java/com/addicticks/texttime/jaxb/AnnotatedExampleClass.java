@@ -18,10 +18,10 @@ package com.addicticks.texttime.jaxb;
 import com.addicticks.texttime.jaxb.OffsetDateTimeXmlAdapter;
 import com.addicticks.texttime.jaxb.OffsetDateXmlAdapter;
 import java.time.OffsetDateTime;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
