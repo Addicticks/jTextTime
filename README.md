@@ -47,13 +47,22 @@ The library is available from Central Maven:
 <dependency>
     <groupId>com.addicticks.oss</groupId>
     <artifactId>jtexttime</artifactId>
-    <version> ... latest ...</version>
+    <version> ... see 'Versions' below ...</version>
 </dependency>
 ```
 
 The library has no transitive dependencies.
 
-Requires Java 8 or later.
+
+## Versions
+
+Version 1.x works with the `javax.xml` namespace and requires JDK 8 or later. These versions work perfectly 
+fine but no new features will be introduced here, however bugs will be fixed if any should be found.
+
+Version 2.x onwards works with the `jakarta.xml` namespace and requires JDK 11 or later.
+
+Within those ranges the latest version should be used.
+
 
 ## JAXB
 
